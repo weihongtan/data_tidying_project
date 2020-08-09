@@ -8,11 +8,12 @@ output: html_document
 
 ```{r setup, include=FALSE}
 ## install packages if necessary
-list.of.packages <- c("httr", "readxl", "dplyr", "tidyr", "stringr", "reshape2", "skimr", "ggplot2")
+list.of.packages <- c("here", "httr", "readxl", "dplyr", "tidyr", "stringr", "reshape2", "skimr", "ggplot2")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
 
 ## load packages
+library(here)
 library(httr)
 library(readxl)
 library(dplyr)
@@ -48,7 +49,8 @@ colnames(df2) <- df2[1,]
 
 ```{r save-data, warning=FALSE} 
 ## use saveRDS() to save each object as a .rds file 
-
+saveRDS(df1, file = '../../data/raw_data/df_department.rds')
+saveRDS(df2, file = '../../data/raw_data/df_retail.rds')
 ```
 
 ### Wrangle Data
